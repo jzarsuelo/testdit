@@ -1,7 +1,9 @@
-package com.example.pao.testdit;
+package com.example.pao.testdit.mvp.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.pao.testdit.R;
 
 public class MainActivity extends AppCompatActivity {
 
