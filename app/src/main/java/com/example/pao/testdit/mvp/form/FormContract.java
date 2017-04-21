@@ -8,9 +8,15 @@ public interface FormContract {
 
     interface View {
 
+        void showSuccessMessage();
+
+        void navigateToHome();
+
+        void showFailedMessage();
     }
 
     interface Presenter {
 
+        void createTopic(String topicName);
     }
 }
