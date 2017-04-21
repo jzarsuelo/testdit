@@ -13,4 +13,9 @@ public class FormPresenter implements Presenter {
     public FormPresenter(View view) {
         mView = view;
     }
+
+    @Override
+    public void createTopic(String topicName) {
+
+    }
 }

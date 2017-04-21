@@ -13,4 +13,19 @@ public class FormActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
     }
+
+    @Override
+    public void showSuccessMessage() {
+
+    }
+
+    @Override
+    public void navigateToHome() {
+
+    }
+
+    @Override
+    public void showFailedMessage() {
+
+    }
 }
