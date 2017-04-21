@@ -10,6 +10,7 @@ import org.mockito.junit.MockitoRule;
 import java.nio.CharBuffer;
 
 import static com.example.pao.testdit.mvp.form.FormContract.View;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -47,6 +48,8 @@ public class FormPresenterTest {
         mPresenter.createTopic(topicName);
 
         verify(mockView).showFailedMessage();
+        verify(mockView, never()).showSuccessMessage();
+        verify(mockView, never()).navigateToHome();
     }
 
     @Test
@@ -56,6 +59,8 @@ public class FormPresenterTest {
         mPresenter.createTopic(topicName);
 
         verify(mockView).showFailedMessage();
+        verify(mockView, never()).showSuccessMessage();
+        verify(mockView, never()).navigateToHome();
     }
 
     private String generateString(int numberOfCharacters) {
