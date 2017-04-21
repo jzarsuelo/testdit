@@ -1,5 +1,10 @@
 package com.example.pao.testdit.mvp.form;
 
+import android.text.TextUtils;
+
+import com.example.pao.testdit.model.Topic;
+import com.example.pao.testdit.util.TempStorageUtil;
+
 import static com.example.pao.testdit.mvp.form.FormContract.*;
 
 /**
@@ -7,6 +12,8 @@ import static com.example.pao.testdit.mvp.form.FormContract.*;
  */
 
 public class FormPresenter implements Presenter {
+
+    public static final int MAX_CHAR = 255;
 
     View mView;
 
@@ -16,6 +23,14 @@ public class FormPresenter implements Presenter {
 
     @Override
     public void createTopic(String topicName) {
+        if ( topicName == null || topicName.isEmpty() || topicName.length() > MAX_CHAR) {
+            mView.showFailedMessage();
+        }
 
+        Topic topic = new Topic(topicName, 0);
+        TempStorageUtil.insert(topic);
+
+        mView.showSuccessMessage();
+        mView.navigateToHome();
     }
 }
