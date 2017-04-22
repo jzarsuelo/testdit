@@ -1,6 +1,7 @@
 package com.example.pao.testdit.mvp.form;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,12 @@ public class FormActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
         mPresenter = new FormPresenter(this);
+
+        setTitle(getString(R.string.create_topic));
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -36,6 +43,7 @@ public class FormActivity extends AppCompatActivity
 
     @Override
     public void navigateToHome() {
+        setResult(RESULT_OK, getIntent());
         finish();
     }
 

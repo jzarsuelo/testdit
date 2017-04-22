@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.form.FormActivity">
+        <activity android:name=".mvp.form.FormActivity"
+            android:parentActivityName=".mvp.main.MainActivity">
         </activity>
     </application>
 
