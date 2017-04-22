@@ -39,4 +39,11 @@ public class TopicAdapterTest {
 
         verify(mockView).refresh();
     }
+
+    @Test
+    public void decreaseVoteTest() {
+        mPresenter.decreaseVote(mockTopic);
+
+        verify(mockView).refresh();
+    }
 }
