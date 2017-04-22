@@ -1,4 +1,4 @@
-package com.example.pao.testdit.mvp.main;
+package com.example.pao.testdit.mvp.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +33,7 @@ public class TopicAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
         if (holder instanceof TopicViewHolder) {
             TopicViewHolder topicViewHolder = (TopicViewHolder) holder;
             topicViewHolder.bind(position);

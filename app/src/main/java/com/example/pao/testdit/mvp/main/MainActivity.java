@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.pao.testdit.R;
 import com.example.pao.testdit.mvp.form.FormActivity;
+import com.example.pao.testdit.mvp.main.adapter.TopicAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
