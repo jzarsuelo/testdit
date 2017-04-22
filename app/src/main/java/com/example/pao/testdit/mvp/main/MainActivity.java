@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.pao.testdit.R;
 import com.example.pao.testdit.mvp.form.FormActivity;
 import com.example.pao.testdit.mvp.main.adapter.TopicAdapter;
+import com.example.pao.testdit.util.TempStorageUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity
 
     @BindView(R.id.rv_topics)
     RecyclerView mRvTopics;
+
+    @BindView(R.id.tv_empty_data)
+    TextView mTvEmptyData;
 
     TopicAdapter mTopicAdapter;
 
@@ -39,6 +45,8 @@ public class MainActivity extends AppCompatActivity
 
         mTopicAdapter = new TopicAdapter();
         mRvTopics.setAdapter(mTopicAdapter);
+
+        toggleRvTopicVisibility();
     }
 
     @OnClick(R.id.fab_to_form)
@@ -51,9 +59,21 @@ public class MainActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Refresh data only when topic is created successfully
         if (requestCode == CREATE_TOPIC_REQUEST  && resultCode  == RESULT_OK) {
-            mTopicAdapter.notifyDataSetChanged();
+            toggleRvTopicVisibility();
+        }
+    }
+
+    /**
+     * Helper method to show {@link #mRvTopics}, if the data count is more than 0
+     */
+    private void toggleRvTopicVisibility() {
+        if ( TempStorageUtil.getCount() == 0 ) {
+            mRvTopics.setVisibility(View.INVISIBLE);
+            mTvEmptyData.setVisibility(View.VISIBLE);
+        } else {
+            mRvTopics.setVisibility(View.VISIBLE);
+            mTvEmptyData.setVisibility(View.INVISIBLE);
         }
     }
 }

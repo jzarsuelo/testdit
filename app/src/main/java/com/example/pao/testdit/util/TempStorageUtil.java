@@ -27,6 +27,10 @@ public class TempStorageUtil {
         return true;
     }
 
+    public static int getCount() {
+        return DB.size();
+    }
+
     public static List<Topic> getAll() {
         return DB;
     }
