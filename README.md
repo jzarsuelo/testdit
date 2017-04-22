@@ -9,10 +9,9 @@ Carousell code exam
 - Minimum SDK Version - Android 4.4 (API Level 19)
 
 ## Prerequisite
-- Android Studio 2.3
-You can install or update the items below via **Android SDK Manager**, under **SDK Tools**
--- Android Build Tools Version - 25.0.2
--- Android Support Repository - 47.0.0
+- Android Studio 2.3 - You can install or update the items below via **Android SDK Manager**, under **SDK Tools**
+  - Android Build Tools Version - 25.0.2
+  - Android Support Repository - 47.0.0
 
 
 ## Installation
