@@ -13,6 +13,7 @@ import com.example.pao.testdit.util.TempStorageUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Pao on 22/4/17.
@@ -20,6 +21,17 @@ import butterknife.ButterKnife;
 
 public class TopicAdapter extends RecyclerView.Adapter
             implements TopicAdapterContract.View {
+
+    private final TopicAdapterPresenter mPresenter;
+
+    interface VoteClickListener {
+        void onClickUpVote(int position);
+        void onClickDownVote(int position);
+    }
+
+    public TopicAdapter() {
+        mPresenter = new TopicAdapterPresenter(this);
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -57,6 +69,9 @@ public class TopicAdapter extends RecyclerView.Adapter
         @BindView(R.id.tv_topic_name)
         TextView mTvTopicName;
 
+        @BindView(R.id.tv_vote_count)
+        TextView mTvVoteCount;
+
         public TopicViewHolder(View itemView) {
 
             super(itemView);
@@ -69,6 +84,28 @@ public class TopicAdapter extends RecyclerView.Adapter
             Topic topic = TempStorageUtil.get(position);
 
             mTvTopicName.setText( topic.getName() );
+            mTvVoteCount.setText( String.valueOf(topic.getVote()) );
+        }
+
+        @OnClick(R.id.iv_up)
+        void onClickUpVote() {
+
+            Topic topic = getAdapterPositionTopic();
+            mPresenter.increaseVote(topic);
+        }
+
+        @OnClick(R.id.iv_down)
+        void onClickDownVote() {
+
+            Topic topic = getAdapterPositionTopic();
+            mPresenter.increaseVote(topic);
+        }
+
+        private Topic getAdapterPositionTopic() {
+            int position = getAdapterPosition();
+            Topic topic = TempStorageUtil.get(position);
+
+            return topic;
         }
     }
 }
