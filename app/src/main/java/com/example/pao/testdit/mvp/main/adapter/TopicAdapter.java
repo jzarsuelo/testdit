@@ -18,7 +18,8 @@ import butterknife.ButterKnife;
  * Created by Pao on 22/4/17.
  */
 
-public class TopicAdapter extends RecyclerView.Adapter {
+public class TopicAdapter extends RecyclerView.Adapter
+            implements TopicAdapterContract.View {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -44,6 +45,11 @@ public class TopicAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return TempStorageUtil.getAll().size();
+    }
+
+    @Override
+    public void refresh() {
+        notifyDataSetChanged();
     }
 
     class TopicViewHolder extends RecyclerView.ViewHolder {

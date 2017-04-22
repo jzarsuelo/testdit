@@ -8,8 +8,8 @@ import java.util.Comparator;
 
 public class Topic {
 
-    String mName;
-    long mVote;
+    private String mName;
+    private long mVote;
 
     public Topic() {
     }
@@ -33,6 +33,14 @@ public class Topic {
 
     public void setVote(long vote) {
         mVote = vote;
+    }
+
+    public void increaseVote() {
+        mVote++;
+    }
+
+    public void decreaseVote() {
+        mVote--;
     }
 
     public static class SortedByHighestVote implements Comparator<Topic> {

@@ -17,6 +17,7 @@ import static org.mockito.Mockito.verify;
  */
 
 public class TopicAdapterTest {
+
     @Rule
     public MockitoRule mMockitoRule = MockitoJUnit.rule();
 
@@ -37,6 +38,7 @@ public class TopicAdapterTest {
     public void increaseVoteTest() {
         mPresenter.increaseVote(mockTopic);
 
+        verify(mockTopic).increaseVote();
         verify(mockView).refresh();
     }
 
@@ -44,6 +46,7 @@ public class TopicAdapterTest {
     public void decreaseVoteTest() {
         mPresenter.decreaseVote(mockTopic);
 
+        verify(mockTopic).decreaseVote();
         verify(mockView).refresh();
     }
 }
