@@ -24,11 +24,6 @@ public class TopicAdapter extends RecyclerView.Adapter
 
     private final TopicAdapterPresenter mPresenter;
 
-    interface VoteClickListener {
-        void onClickUpVote(int position);
-        void onClickDownVote(int position);
-    }
-
     public TopicAdapter() {
         mPresenter = new TopicAdapterPresenter(this);
     }
@@ -61,6 +56,7 @@ public class TopicAdapter extends RecyclerView.Adapter
 
     @Override
     public void refresh() {
+        TempStorageUtil.sortByHighestVote();
         notifyDataSetChanged();
     }
 
@@ -98,7 +94,7 @@ public class TopicAdapter extends RecyclerView.Adapter
         void onClickDownVote() {
 
             Topic topic = getAdapterPositionTopic();
-            mPresenter.increaseVote(topic);
+            mPresenter.decreaseVote(topic);
         }
 
         private Topic getAdapterPositionTopic() {

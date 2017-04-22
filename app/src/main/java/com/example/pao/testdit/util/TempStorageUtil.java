@@ -34,4 +34,8 @@ public class TempStorageUtil {
     public static Topic get(int position) {
         return DB.get(position);
     }
+
+    public static void sortByHighestVote() {
+        Collections.sort(DB, SORTED_BY_HIGHEST_VOTE);
+    }
 }
