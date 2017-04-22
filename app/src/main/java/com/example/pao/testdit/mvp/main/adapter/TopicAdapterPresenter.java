@@ -1,6 +1,7 @@
 package com.example.pao.testdit.mvp.main.adapter;
 
 import com.example.pao.testdit.model.Topic;
+import com.example.pao.testdit.util.TempStorageUtil;
 
 import static com.example.pao.testdit.mvp.main.adapter.TopicAdapterContract.*;
 
@@ -19,12 +20,14 @@ public class TopicAdapterPresenter implements Presenter {
     @Override
     public void increaseVote(Topic topic) {
         topic.increaseVote();
+        TempStorageUtil.sortByHighestVote();
         mView.refresh();
     }
 
     @Override
     public void decreaseVote(Topic topic) {
         topic.decreaseVote();
+        TempStorageUtil.sortByHighestVote();
         mView.refresh();
     }
 }

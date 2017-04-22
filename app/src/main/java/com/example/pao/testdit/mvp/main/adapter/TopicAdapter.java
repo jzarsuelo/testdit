@@ -51,15 +51,17 @@ public class TopicAdapter extends RecyclerView.Adapter
 
     @Override
     public int getItemCount() {
-        return TempStorageUtil.getAll().size();
+        return TempStorageUtil.getCount();
     }
 
     @Override
     public void refresh() {
-        TempStorageUtil.sortByHighestVote();
         notifyDataSetChanged();
     }
 
+    /**
+     * Cache the view of each item
+     */
     class TopicViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_topic_name)
@@ -75,6 +77,10 @@ public class TopicAdapter extends RecyclerView.Adapter
             ButterKnife.bind(this, itemView);
         }
 
+        /**
+         * Bind the data to its respective view
+         * @param position
+         */
         public void bind(int position) {
 
             Topic topic = TempStorageUtil.get(position);
@@ -97,6 +103,9 @@ public class TopicAdapter extends RecyclerView.Adapter
             mPresenter.decreaseVote(topic);
         }
 
+        /**
+         * Return an instance of {@link Topic} based on the adapter position
+         */
         private Topic getAdapterPositionTopic() {
             int position = getAdapterPosition();
             Topic topic = TempStorageUtil.get(position);

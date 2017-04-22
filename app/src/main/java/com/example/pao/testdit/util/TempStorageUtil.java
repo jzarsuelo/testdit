@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Created by Pao on 21/4/17.
+ *
+ * Utility class that serves as in-memory data structure
  */
 
 public class TempStorageUtil {
