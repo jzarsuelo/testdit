@@ -2,7 +2,9 @@ package com.example.pao.testdit.util;
 
 import com.example.pao.testdit.model.Topic;
 
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Pao on 21/4/17.
@@ -10,16 +12,26 @@ import java.util.TreeSet;
 
 public class TempStorageUtil {
 
-    final static TreeSet<Topic> DB;
+    final static List<Topic> DB;
+    final static Topic.SortedByHighestVote SORTED_BY_HIGHEST_VOTE;
 
     static {
-        DB = new TreeSet<Topic>(new Topic.SortedByHighestVote());
+        DB = new ArrayList<Topic>();
+        SORTED_BY_HIGHEST_VOTE = new Topic.SortedByHighestVote();
     }
 
     public static boolean insert(Topic topic) {
-
         DB.add(topic);
+        Collections.sort(DB, SORTED_BY_HIGHEST_VOTE);
 
         return true;
+    }
+
+    public static List<Topic> getAll() {
+        return DB;
+    }
+
+    public static Topic get(int position) {
+        return DB.get(position);
     }
 }
