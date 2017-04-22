@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity
 
         if (requestCode == CREATE_TOPIC_REQUEST  && resultCode  == RESULT_OK) {
             toggleRvTopicVisibility();
+            mTopicAdapter.notifyDataSetChanged();
         }
     }
 
